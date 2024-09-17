@@ -14,25 +14,33 @@ function Cadastro() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Nome:', nome);
-    console.log('Sobrenome:', sobrenome);
-    console.log('Telefone:', telefone);
-    console.log('CPF:', cpf);
-    console.log('Email:', email);
-    console.log('Senha:', senha);
-    console.log('Confirmar Senha:', confirmarSenha);
+    if (senha !== confirmarSenha) {
+      alert('As senhas devem conter os mesmos caracteres!');
+      return;
+    }
+
+    const novoUsuario = {
+      nome,
+      sobrenome,
+      telefone,
+      cpf,
+      email,
+      senha,
+    };
+
+    console.log('Dados enviados:', novoUsuario);
+    alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}\nSenha: ${senha}`);
   };
 
   return (
-    <div >
+    <div>
       <header className="header">
         <img src={logo} alt="Logo" className="logo" />
       </header>
       <div className="cadastro-container">
-
         <h2>Cadastro</h2>
         <form onSubmit={handleSubmit}>
-        <div className="form-group">
+          <div className="form-group">
             <input
               type="text"
               id="cpf"
@@ -110,5 +118,3 @@ function Cadastro() {
 }
 
 export default Cadastro;
-
-
