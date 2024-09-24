@@ -1,36 +1,57 @@
-import React, { useState } from 'react';
-import './Cadastro.css';
-import logo from './IterLogo.png';
+import React, { useState } from 'react'
+import './Cadastro.css'
+import logo from './IterLogo.png'
 
 function Cadastro() {
-  const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [nome, setNome] = useState('')
+  const [sobrenome, setSobrenome] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  const [confirmarSenha, setConfirmarSenha] = useState('')
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
     if (senha !== confirmarSenha) {
-      alert('As senhas devem conter os mesmos caracteres!');
-      return;
+      alert('As senhas devem conter os mesmos caracteres!')
+      return
     }
 
     const novoUsuario = {
-      nome,
-      sobrenome,
-      telefone,
-      cpf,
-      email,
-      senha,
-    };
+      nome: nome,
+      sobrenome: sobrenome,
+      telefone: telefone,
+      cpf: cpf,
+      email: email,
+      senha: senha,
+    }
 
-    console.log('Dados enviados:', novoUsuario);
-    alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}\nSenha: ${senha}`);
-  };
+    try {
+      const response = await fetch('https://itermob-back.onrender.com/v1/itermob/inserirUsuario', {
+      method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(novoUsuario),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}`)
+        console.log('Resposta do servidor:', data)
+      } else {
+        console.log('Erro no cadastro:', data)
+        alert('Erro no cadastro: ' + (data.message || 'Erro desconhecido'))
+      }
+    } catch (error) {
+      console.error('Erro na requisição:', error)
+      alert('Erro ao conectar com o servidor. Verifique sua conexão.')
+    }
+  }
 
   return (
     <div>
@@ -114,7 +135,7 @@ function Cadastro() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Cadastro;
+export default Cadastro
