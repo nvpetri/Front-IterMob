@@ -10,7 +10,7 @@ function Cadastro() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmarSenha, setConfirmarSenha] = useState('')
-
+  const [usuarioId, setUsuarioId] = useState(null) 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -30,10 +30,10 @@ function Cadastro() {
 
     try {
       const response = await fetch('https://itermob-back.onrender.com/v1/itermob/inserirUsuario', {
-      method: 'POST',
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(novoUsuario),
       })
@@ -41,7 +41,8 @@ function Cadastro() {
       const data = await response.json()
 
       if (response.ok) {
-        alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}`)
+        setUsuarioId(data.id) 
+        alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}\nID: ${data.id}`)
         console.log('Resposta do servidor:', data)
       } else {
         console.log('Erro no cadastro:', data)

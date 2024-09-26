@@ -1,16 +1,17 @@
 import React from 'react';
-import Cadastro from './Cadastro';  
+import Login from './Login'; 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Cadastro />  {}
+      <Login />  {}
     </div>
   );
 }
 
 export default App;
+
 
 
 
