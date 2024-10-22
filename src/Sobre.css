@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #f2b136;
+    padding: 20px 0;
+    margin: 0; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: black; 
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.about-container {
+    text-align: left;
+    padding: 40px;
+}
+
+.about-section {
+    margin-bottom: 50px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-content {
+    flex: 1; 
+    padding-right: 20px; 
+}
+
+.about-content h1 {
+    color: #000000;
+    font-size: 22px; 
+    letter-spacing: -0.5px; 
+    margin-bottom: 10px; 
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    width: 700px;
+}
+
+.about-image img {
+    width: 400px; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.service-item {
+    text-align: center;
+    max-width: 200px;
+}
+
+.service-item img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    color: #f2b136;
+}
+
+.paragrafo-proposito,
+.paragrafo-equipe {
+    width: 700px; 
+    margin: 0 auto;
+    font-size: 16px; 
+    line-height: 1.6; 
+    letter-spacing: -0.5px;
+}
+
+.paragrafos {
+    display: flex;
+    width: 500px;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.team-image {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 100px;
+}
+
+.team-image img {
+    width: 300px; 
+    max-width: 100%; 
+    height: auto; 
+}
+
+footer {
+    background-color: #f2b136;
+    color: rgb(0, 0, 0);
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0; 
+}
