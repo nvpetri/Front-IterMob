@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './Sobre'; 
+import Login from './Download'; 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="IterMob">
       <Login />  {}
     </div>
   );
