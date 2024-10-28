@@ -1,0 +1,76 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+  
+  header {
+    background-color: #f2b136;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+  }
+  
+  .download-container {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .download-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2b136;
+    padding: 40px;
+  }
+  
+  .download-text {
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  .download-text h1 {
+    font-size: 24px;
+    color: white;
+  }
+  
+  
+  .app-store-links img {
+    width: 150px;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+  
+  .download-image img {
+    width: 250px;
+  }
+  
+  footer {
+    background-color: #f2b136;
+    color: black;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+
+  }
