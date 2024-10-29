@@ -10,44 +10,31 @@ function Cadastro() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [confirmarSenha, setConfirmarSenha] = useState('')
-<<<<<<< HEAD
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-=======
   const [usuarioId, setUsuarioId] = useState(null) 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
->>>>>>> 06618ce1565a05650336a6dde402e158aeb16f2a
     if (senha !== confirmarSenha) {
       alert('As senhas devem conter os mesmos caracteres!')
-      return
+      
     }
 
     const novoUsuario = {
-      nome: nome,
-      sobrenome: sobrenome,
-      telefone: telefone,
-      cpf: cpf,
-      email: email,
-      senha: senha,
+      nome,
+      sobrenome,
+      telefone,
+      cpf,
+      email,
+      senha,
     }
 
     try {
       const response = await fetch('https://itermob-back.onrender.com/v1/itermob/inserirUsuario', {
-<<<<<<< HEAD
-      method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-=======
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
->>>>>>> 06618ce1565a05650336a6dde402e158aeb16f2a
         },
         body: JSON.stringify(novoUsuario),
       })
@@ -55,12 +42,8 @@ function Cadastro() {
       const data = await response.json()
 
       if (response.ok) {
-<<<<<<< HEAD
-        alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}`)
-=======
         setUsuarioId(data.id) 
         alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}\nID: ${data.id}`)
->>>>>>> 06618ce1565a05650336a6dde402e158aeb16f2a
         console.log('Resposta do servidor:', data)
       } else {
         console.log('Erro no cadastro:', data)

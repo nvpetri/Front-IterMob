@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './FacCenter'; 
+import Login from './Escolhas'; 
 import './App.css';
 
 function App() {
