@@ -1,0 +1,96 @@
+.fac-container {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 10px 0;
+  }
+  
+  header a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+
+  }
+  
+  .logo {
+    max-width: 200px;
+    height: auto;
+    justify-content: center;
+
+  }
+  
+  .fac-sections {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  .fac-card {
+    background-color: #FFD056 ;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 30%;
+  }
+  
+  .fac-card h2 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .card-item {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card-item h3 {
+    font-size: 1.1em;
+    margin: 0;
+    color: #333;
+  }
+  
+  .card-item p {
+    font-size: 0.9em;
+    margin: 5px 0;
+  }
+  
+  .card-item button {
+    background-color: #FFC222;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .card-item button:hover {
+    background-color: #FFC222;
+  }
+  
+  footer {
+    margin-top: auto;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    color: #333;
+    font-weight: bold;
+  }
