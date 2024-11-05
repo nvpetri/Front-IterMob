@@ -1,15 +1,15 @@
 import React from 'react';
 import './Escolhas.css';
-import logo from './IterLogo.png'; // Substitua pelo caminho da sua imagem de logo
-import usuariosImg from './usuarios.png'; // Imagem para o botão "Usuários"
-import onibusImg from './onibus.png'; // Imagem para o botão "Ônibus"
-import facImg from './fac.png'; // Imagem para o botão "FAC"
+import logo from './IterLogo.png'; 
+import usuariosImg from './usuarios.png'; 
+import onibusImg from './onibus.png'; 
+import facImg from './fac.png'; 
 
 function Escolhas() {
     return (
         <div className="main-container">
             <header className="header">
-                <img src={logo} alt="Logo" className="logo" /> {/* Logo no topo */}
+                <img src={logo} alt="Logo" className="logo" /> {}
             </header>
             <div className="container">
                 <div className="button-group">
@@ -27,7 +27,7 @@ function Escolhas() {
                     <span>Administração - FAC</span>
                 </div>
             </div>
-            <footer className="copyright">Copyright 2024 © IterMob</footer> {/* Copyright */}
+            <footer className="copyright">Copyright 2024 © IterMob</footer> {}
         </div>
     );
 }

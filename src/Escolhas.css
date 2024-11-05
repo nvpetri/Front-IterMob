@@ -5,7 +5,7 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
-    background: linear-gradient(to bottom, #ffeb3b, #ffe082);
+    background: linear-gradient(to top, #FFC222 0%, rgba(255, 194, 34, 0) 100%) no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,20 +19,26 @@ body {
 }
 
 .header {
-    margin-bottom: 20px;
+    margin-bottom: 10px; 
+    margin-top: -20px;
 }
 
 .container {
-    background: white;
-    padding: 40px; 
+    background: rgba(255, 246, 224, 0.9);;
+    padding: 70px; 
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .logo {
-    max-width: 150px; 
+    max-width: 180px;
+    margin-top: -20px;
 }
 
 .button-group {
@@ -47,7 +53,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 120px; 
-    height: 120px; 
+    height: 130px; 
     background-color: #fbc02d;
     border: none;
     border-radius: 10px; 
