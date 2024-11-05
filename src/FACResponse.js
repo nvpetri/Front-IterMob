@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
-import './FACResponse.css';
+import React, { useState } from 'react'
+import './FACResponse.css'
 import logo from './IterLogo.png'
 import PerfilVirginia from './PerfilVirginia.png'
 
 function FACResponse() {
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState('')
 
   const handleInputChange = (e) => {
-    setResponse(e.target.value);
-  };
+    setResponse(e.target.value)
+  }
 
   const handleSubmit = (e) => {
+<<<<<<< HEAD
     e.preventDefault();
     console.log('Resposta enviada:', response);
     setResponse('');
   };
+=======
+    e.preventDefault()
+    console.log('Resposta enviada:', response)
+    setResponse('')
+  }
+>>>>>>> ecb7fc335ffb1ade0536b3e4a55fc7992758cea2
 
   return (
     <div className="fac-response-container">
@@ -25,7 +32,11 @@ function FACResponse() {
       <div className="feedback-container">
         <div className="feedback-card">
           <div className="user-info">
+<<<<<<< HEAD
             <img src={PerfilVirginia} alt="Perfil de Virgínia Fonseca" className="user-photo"/>
+=======
+            <img src={PerfilVirginia} alt="Perfil de Virgínia Fonseca" className="user-photo" />
+>>>>>>> ecb7fc335ffb1ade0536b3e4a55fc7992758cea2
             <div>
               <p className="user-name">Virginia Fonseca</p>
               <p className="user-code">T246</p>
@@ -51,7 +62,12 @@ function FACResponse() {
         <p>Copyright 2024 © IterMob</p>
       </footer>
     </div>
-  );
+  )
 }
 
+<<<<<<< HEAD
 export default FACResponse;
+=======
+export default FACResponse
+
+>>>>>>> ecb7fc335ffb1ade0536b3e4a55fc7992758cea2
