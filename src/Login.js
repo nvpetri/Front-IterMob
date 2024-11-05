@@ -22,6 +22,7 @@ function Login() {
       </div>
 
       <div className="login-container">
+      <h2>ACESSO ADMINISTRADOR</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input

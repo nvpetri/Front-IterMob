@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './Telahome'; 
+import Login from './Sobre'; 
 import './App.css';
 
 function App() {
