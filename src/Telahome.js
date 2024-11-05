@@ -1,6 +1,7 @@
 import React from 'react'
 import './Telahome.css'
 import logo from './IterLogo.png'
+import Certinho from './certinhoHome.png'
 
 function Telahome() {
   const buses = [
@@ -36,7 +37,10 @@ function Telahome() {
             allowFullScreen=""
             loading="lazy"
           ></iframe>
-          <div className="status">Operação normal</div>
+          <div className="status">
+            <img src= {Certinho} alt="Status Icon" className="status-icon"/>
+            Operação normal
+          </div>
         </div>
 
         <div className="bus-list">
