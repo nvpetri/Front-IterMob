@@ -1,16 +1,13 @@
-import React from 'react';
-import Login from './Sobre'; 
-import './App.css';
+import React from 'react'
+import Login from './FacCenter'
+import './App.test'
 
 function App() {
   return (
     <div className="IterMob">
-      <Login />  {}
+      <Login />
     </div>
-  );
+  )
 }
-export default App;
 
-
-
-
+export default App
