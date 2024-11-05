@@ -3,15 +3,19 @@
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    background-color: #ffffff;
+    background-color: #FBF6EB;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; 
 }
-
 .header {
     background-color: #f2b136;
-    padding: 20px 0;
+    padding: 0; 
     margin: 0; 
+    width: 100%; 
+
+    top: 0;
+    z-index: 10;
 }
 
 nav ul {
@@ -20,7 +24,8 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-}
+    align-items: center;
+    height: 100%; }
 
 nav ul li {
     margin: 0 15px;
@@ -67,7 +72,7 @@ nav ul li a {
 }
 
 .about-image img {
-    width: 400px; 
+    width: 700px; 
     max-width: 100%; 
     height: auto; 
 }
@@ -113,19 +118,80 @@ nav ul li a {
     display: flex;
     justify-content: flex-end;
     margin-top: 100px;
-}
+    margin-bottom: 50px; }
 
 .team-image img {
-    width: 300px; 
-    max-width: 100%; 
+    width: 500px; 
+    max-width: 100%;
     height: auto; 
 }
 
 footer {
     background-color: #f2b136;
     color: rgb(0, 0, 0);
-    padding: 20px 10px;
+    padding: 0; 
     display: flex;
     justify-content: space-around;
-    margin: 0; 
+    margin: 0;
+    position: fixed; 
+    bottom: 0;
+    width: 100%; 
+    text-align: center;
+    padding: 10px 0; 
+}
+
+footer span {
+    margin: 0 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-content h1 {
+        font-size: 20px;
+    }
+
+    .about-content p {
+        width: 90%;
+        font-size: 14px;
+    }
+
+    .about-image img {
+        width: 80%;
+        max-width: 100%;
+    }
+
+    .services {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .service-item img {
+        width: 50px;
+    }
+
+    .paragrafos {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .team-image {
+        width: 90%; 
+        justify-content: center;
+    }
+
+    .team-image img {
+        width: 80%; 
+    }
+
+    footer {
+        padding: 10px 0;
+        text-align: center;
+    }
 }
