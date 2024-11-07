@@ -1,7 +1,7 @@
-import React from 'react';
-import './UserDetails.css';
-import logo from './IterLogo.png';
-import Cartao1 from './cartao1.png'; 
+import React from 'react'
+import './UserDetails.css'
+import logo from './IterLogo.png'
+import Cartao1 from './cartao1.png' 
 
 function UserDetails() {
   return (
@@ -37,7 +37,7 @@ function UserDetails() {
         <p>Copyright 2024 © IterMob</p>
       </footer>
     </div>
-  );
+  )
 }
 
-export default UserDetails;
+export default UserDetails
