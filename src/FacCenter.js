@@ -26,7 +26,7 @@ function FacCenter() {
 
      
       <section className="fac-sections">
-        <div className="fac-card">
+        <div className="fac-card"> justify-content: flex-end;
           <h2>Reclamações</h2>
           <div className="card-item">
           <div className="profile-container">
