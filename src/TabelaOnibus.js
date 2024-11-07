@@ -4,9 +4,8 @@ import logo from './IterLogo.png';
 
 function TabelaOnibus() {
   const buses = [
-    { id: 1, name: 'Ônibus A', company: 'Empresa 1', prefix: 'ABC-1234', status: 'Em operação' },
-    { id: 2, name: 'Ônibus B', company: 'Empresa 2', prefix: 'DEF-5678', status: 'Em manutenção' },
-    { id: 3, name: 'Ônibus C', company: 'Empresa 3', prefix: 'GHI-9101', status: 'Em operação' },
+    { id: 1, name: 'Jd. Angélica', company: 'Del Rey', prefix: 'ABC-1234', status: 'Em operação' },
+    { id: 2, name: 'Vila Dirce', company: 'Del Rey', prefix: 'DEF-5678', status: 'Em manutenção' },
   ];
 
   return (
@@ -14,7 +13,7 @@ function TabelaOnibus() {
       <img src={logo} alt="Logo" className="logo" />     
 
       <div className="bus-management-card">
-        <h2>Gerenciamento de Ônibus</h2>
+        <h2>GEREÊNCIA DE ÔNIBUS</h2>
         
         <table className="bus-table">
           <thead>

@@ -53,7 +53,7 @@ body {
   .bus-table th, .bus-table td {
     padding: 12px;
     text-align: left;
-    border: 1px solid #FFF6E0; }
+    border: 1px solid #333; }
   
   .bus-table th {
     background-color: #FFF6E0;  
