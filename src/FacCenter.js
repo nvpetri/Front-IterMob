@@ -1,6 +1,7 @@
 import React from 'react'
 import './FacCenter.css'
 import logo from './IterLogo.png'
+import seta from './seta.png'
 import PerfilRaica from './PerfilRaica.png'
 import PerfilVirginia from './PerfilVirginia.png'
 import PerfilCarol from './PerfilCarol.png'
@@ -13,7 +14,10 @@ function FacCenter() {
     <div className="fac-container">
       <header>
   <div className="header-left">
-    <a href="#voltar">Central do FAC</a>
+  <a href="#voltar">
+      <img src={seta} alt="Seta para voltar" className="seta-icon" />
+      Central do FAC
+    </a>
   </div>
   <div className="header-center">
     <img src={logo} alt="Logo" className="logo" />
@@ -28,6 +32,7 @@ function FacCenter() {
           <div className="profile-container">
               <img src={PerfilRaica} alt="Perfil de Raica Martinez" className="profile-pic" />
               <h3>Raica Martinez</h3>
+              <h4>A11</h4>
             </div>
             <p>Linha muito demorada, poderiam ter mais ônibus para rodar.</p>
             <button>RESPONDER</button>
@@ -36,6 +41,7 @@ function FacCenter() {
           <div className="profile-container">
               <img src={PerfilVirginia} alt="Perfil de Virgínia Fonseca" className="profile-pic" />
               <h3>Virgínia Fonseca</h3>
+              <h4>T246</h4>
             </div>
             <p>Falta de limpeza nos ônibus e janelas estavam emperradas.</p>
             <button>RESPONDER</button>
@@ -67,6 +73,7 @@ function FacCenter() {
           <div className="profile-container">
               <img src={PerfilPetri} alt="Perfil de Nicolas Petri" className="profile-pic" />
               <h3>Nicolas Petri</h3>
+              <h4>25</h4>
             </div>
             <p>Esqueci de retirar minha lancheira em uma viagem no 25 - provavelmente está entre os bancos da frente.</p>
             <button>RESPONDER</button>
@@ -75,6 +82,7 @@ function FacCenter() {
           <div className="profile-container">
               <img src={PerfilNeyl} alt="Perfil de Neyma" className="profile-pic" />
               <h3>Neymar Jr.</h3>
+              <h4>035</h4>
             </div>
             <p>Esqueci minha mochila dentro do ônibus UBS - Vinha no horário de tarde umas 16h.</p>
             <button>RESPONDER</button>
