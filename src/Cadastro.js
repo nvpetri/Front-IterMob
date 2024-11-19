@@ -30,7 +30,7 @@ function Cadastro() {
     }
 
     try {
-      const response = await fetch('https://itermob-back.onrender.com/v1/itermob/inserirUsuario', {
+      const response = await fetch('https://itermob-back.onrender.com/v1/itermob/usuario', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

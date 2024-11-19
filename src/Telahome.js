@@ -1,19 +1,95 @@
-import React from 'react'
-import './Telahome.css'
-import logo from './IterLogo.png'
-import Certinho from './certinhoHome.png'
+import React, { useState, useEffect } from 'react';
+import './Telahome.css';  // Importando o arquivo de estilos
+import logo from './IterLogo.png';  // Logo
+import Certinho from './certinhoHome.png';  // Imagem de status (Operação normal)
 
 function Telahome() {
+  // Estado para armazenar a localização
+  const [location, setLocation] = useState({ lat: null, lng: null });
+
+  // Função para carregar o Google Maps
+  const loadGoogleMaps = (callback) => {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAYHwAE907WBa_MbMh8TD5uZI_ampJmtkc&callback=${callback}`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  };
+
+  // Função para obter a localização atual
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error("Erro ao obter localização:", error);
+        }
+      );
+    } else {
+      console.error("Geolocalização não suportada neste navegador.");
+    }
+  }, []);
+
+  // Carregar o Google Maps assim que a localização for obtida
+  useEffect(() => {
+    if (location.lat && location.lng) {
+      loadGoogleMaps('initMap');
+    }
+  }, [location]);
+
+  // Função para inicializar o mapa
+  window.initMap = () => {
+    if (location.lat && location.lng) {
+      // Cria o mapa
+      const map = new window.google.maps.Map(document.getElementById('map'), {
+        center: { lat: location.lat, lng: location.lng },
+        zoom: 14,
+      });
+
+      // Adiciona o marcador para a localização atual
+      new window.google.maps.Marker({
+        position: { lat: location.lat, lng: location.lng },
+        map,
+        title: 'Sua Localização',
+      });
+
+      // Pontos adicionais para adicionar ao mapa
+      const points = [
+        { lat: -23.527774, lng: -46.836318, title: "Av. Carmine Gragnano, 731" },
+        { lat: -23.522597, lng: -46.836445, title: "Terminal Rodoferroviário Vereador Geraldo Corrêa" },
+        { lat: -23.531053, lng: -46.832746, title: "Rua Fernão Dias Paes Leme, 257" }
+      ]
+      
+      
+
+      // Adiciona outros pontos ao mapa
+      points.forEach((point) => {
+        new window.google.maps.Marker({
+          position: { lat: point.lat, lng: point.lng },
+          map,
+          title: point.title,
+        });
+      });
+    }
+  };
+
+  // Lista de ônibus com rotas e tempos de espera
   const buses = [
     { route: '25 - Jd. Popular', time: '5 min' },
     { route: '25 - Jd. Popular', time: '5 min' },
     { route: '25 - Jd. Popular', time: '5 min' },
     { route: '25 - Jd. Popular', time: '5 min' },
     { route: '25 - Jd. Popular', time: '5 min' },
-  ]
+  ];
 
   return (
     <div className="telahome-container">
+      {/* Cabeçalho */}
       <header className="header">
         <nav>
           <ul>
@@ -26,23 +102,20 @@ function Telahome() {
         </nav>
       </header>
 
+      {/* Conteúdo principal */}
       <main className="content">
         <div className="map-container">
-          <iframe
-            title="Mapa"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.0542254840596!2d-46.83631752354108!3d-23.527774359769025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf015170028907%3A0x9293468b2a4b8f5d!2sCarapicu%C3%ADba%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1638289632686!5m2!1spt-BR!2sbr"
-            width="500"
-            height="400"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
+          {/* O mapa será carregado aqui */}
+          <div id="map" style={{ width: '500px', height: '400px' }}></div>
+
+          {/* Status da operação */}
           <div className="status">
-            <img src= {Certinho} alt="Status Icon" className="status-icon"/>
-            Operação normal
+            <img src={Certinho} alt="Status Icon" className="status-icon" />
+            <span>Operação normal</span>
           </div>
         </div>
 
+        {/* Lista de ônibus */}
         <div className="bus-list">
           {buses.map((bus, index) => (
             <div className="bus-item" key={index}>
@@ -53,6 +126,7 @@ function Telahome() {
         </div>
       </main>
 
+      {/* Rodapé */}
       <footer className="footer">
         <div className="footer-content">
           <span>Políticas e termos</span>
@@ -61,8 +135,7 @@ function Telahome() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default Telahome
-
+export default Telahome;
