@@ -1,46 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import './TabelaUsuarios.css';  
-import logo from './IterLogo.png';  
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom' 
+import './TabelaUsuarios.css'  
+import logo from './IterLogo.png'  
 
 function TabelaUsuario() {
-  const [usuarios, setUsuarios] = useState([]);
-  const [erro, setErro] = useState(null);
-  const [paginaAtual, setPaginaAtual] = useState(1); // Página atual
-  const [usuariosPorPagina] = useState(10); // Número de usuários por página
+  const [usuarios, setUsuarios] = useState([])
+  const [erro, setErro] = useState(null)
+  const [paginaAtual, setPaginaAtual] = useState(1) 
+  const [usuariosPorPagina] = useState(10) 
+  const navigate = useNavigate() 
 
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await fetch('https://itermob-back.onrender.com/v1/itermob/usuarios');
+        const response = await fetch('https://itermob-back.onrender.com/v1/itermob/usuarios')
         if (response.ok) {
-          const data = await response.json();
-          console.log('Dados recebidos:', data);
-          setUsuarios(data.usuarios || []);
+          const data = await response.json()
+          setUsuarios(data.usuarios || [])
         } else {
-          setErro('Erro ao buscar usuários');
-          console.error('Erro ao buscar usuários', response.status);
+          setErro('Erro ao buscar usuários')
         }
       } catch (error) {
-        setErro('Erro de rede');
-        console.error('Erro de rede', error);
+        setErro('Erro de rede')
       }
-    };
+    }
 
-    fetchUsuarios();
-  }, []);
+    fetchUsuarios()
+  }, [])
 
-  // Calcular a lista de usuários a serem exibidos
-  const indiceUltimoUsuario = paginaAtual * usuariosPorPagina;
-  const indicePrimeiroUsuario = indiceUltimoUsuario - usuariosPorPagina;
-  const usuariosParaExibir = usuarios.slice(indicePrimeiroUsuario, indiceUltimoUsuario);
+  const indiceUltimoUsuario = paginaAtual * usuariosPorPagina
+  const indicePrimeiroUsuario = indiceUltimoUsuario - usuariosPorPagina
+  const usuariosParaExibir = usuarios.slice(indicePrimeiroUsuario, indiceUltimoUsuario)
 
-  // Lidar com a mudança de página
   const mudarPagina = (pagina) => {
-    setPaginaAtual(pagina);
-  };
+    setPaginaAtual(pagina)
+  }
 
-  // Calcular o número total de páginas
-  const totalPaginas = Math.ceil(usuarios.length / usuariosPorPagina);
+  const totalPaginas = Math.ceil(usuarios.length / usuariosPorPagina)
+
+
+  const handleUsuarioClick = (id) => {
+    navigate(`/user-details/${id}`)
+  }
 
   return (
     <div className="usuario-management-container">
@@ -70,7 +71,13 @@ function TabelaUsuario() {
                 usuariosParaExibir.map(usuario => (
                   <tr key={usuario.id}>
                     <td>{usuario.id}</td>
-                    <td>{usuario.nome} {usuario.sobrenome}</td>
+                    <td 
+                      className="usuario-nome" 
+                      onClick={() => handleUsuarioClick(usuario.id)} // Adicionar clique no nome
+                      style={{ cursor: 'pointer', color: 'blue' }}
+                    >
+                      {usuario.nome} {usuario.sobrenome}
+                    </td>
                     <td>{usuario.email}</td>
                     <td>{usuario.endereco || 'Não disponível'}</td>
                     <td>{usuario.telefone}</td>
@@ -92,16 +99,13 @@ function TabelaUsuario() {
           </tbody>
         </table>
 
-        {/* Barra de navegação para páginas */}
         <div className="pagination">
           <button 
             onClick={() => mudarPagina(paginaAtual - 1)} 
             disabled={paginaAtual === 1}>
             Anterior
           </button>
-
           <span>Página {paginaAtual} de {totalPaginas}</span>
-
           <button 
             onClick={() => mudarPagina(paginaAtual + 1)} 
             disabled={paginaAtual === totalPaginas}>
@@ -114,7 +118,8 @@ function TabelaUsuario() {
         <p>Copyright 2024 © IterMob</p>
       </footer>
     </div>
-  );
+  )
 }
 
-export default TabelaUsuario;
+export default TabelaUsuario
+
