@@ -1,125 +1,58 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom' 
-import './TabelaUsuarios.css'  
-import logo from './IterLogo.png'  
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';  // Importando Link para navegação
+import './TabelaUsuarios.css';
 
-function TabelaUsuario() {
-  const [usuarios, setUsuarios] = useState([])
-  const [erro, setErro] = useState(null)
-  const [paginaAtual, setPaginaAtual] = useState(1) 
-  const [usuariosPorPagina] = useState(10) 
-  const navigate = useNavigate() 
+function TabelaUsuarios() {
+  const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
+    // Exemplo de requisição para buscar os usuários
     const fetchUsuarios = async () => {
-      try {
-        const response = await fetch('https://itermob-back.onrender.com/v1/itermob/usuarios')
-        if (response.ok) {
-          const data = await response.json()
-          setUsuarios(data.usuarios || [])
-        } else {
-          setErro('Erro ao buscar usuários')
-        }
-      } catch (error) {
-        setErro('Erro de rede')
-      }
-    }
+      const response = await fetch('https://itermob-back.onrender.com/v1/itermob/usuarios');
+      const data = await response.json();
+      setUsuarios(data.usuarios);  // Supondo que os dados estão na chave 'usuarios'
+    };
 
-    fetchUsuarios()
-  }, [])
-
-  const indiceUltimoUsuario = paginaAtual * usuariosPorPagina
-  const indicePrimeiroUsuario = indiceUltimoUsuario - usuariosPorPagina
-  const usuariosParaExibir = usuarios.slice(indicePrimeiroUsuario, indiceUltimoUsuario)
-
-  const mudarPagina = (pagina) => {
-    setPaginaAtual(pagina)
-  }
-
-  const totalPaginas = Math.ceil(usuarios.length / usuariosPorPagina)
-
-
-  const handleUsuarioClick = (id) => {
-    navigate(`/user-details/${id}`)
-  }
+    fetchUsuarios();
+  }, []);
 
   return (
     <div className="usuario-management-container">
-      <img src={logo} alt="Logo" className="logo" />
+      <header>
+        <h1>Usuários</h1>
+      </header>
 
-      <div className="usuario-management-card">
-        <h2>GERÊNCIA DE USUÁRIOS</h2>
-
-        <table className="usuario-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Endereço</th>
-              <th>Telefone</th>
-              <th>Foto de Perfil</th>
+      <table className="usuario-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usuarios.map(usuario => (
+            <tr key={usuario.id}>
+              <td>{usuario.id}</td>
+              <td>
+                {/* Link para a página de UserDetails */}
+                <Link to={`/user/${usuario.id}`} style={{ textDecoration: 'underline', color: 'black' }}>
+                  {usuario.nome} {usuario.sobrenome}
+                </Link>
+              </td>
+              <td>{usuario.email}</td>
+              <td>{usuario.telefone}</td>
+              <td>{usuario.endereco || 'Não disponível'}</td>
+              <td><button>Ver Detalhes</button></td>
             </tr>
-          </thead>
-          <tbody>
-            {erro ? (
-              <tr>
-                <td colSpan="6">{erro}</td>
-              </tr>
-            ) : (
-              usuariosParaExibir.length > 0 ? (
-                usuariosParaExibir.map(usuario => (
-                  <tr key={usuario.id}>
-                    <td>{usuario.id}</td>
-                    <td 
-                      className="usuario-nome" 
-                      onClick={() => handleUsuarioClick(usuario.id)} // Adicionar clique no nome
-                      style={{ cursor: 'pointer', color: 'blue' }}
-                    >
-                      {usuario.nome} {usuario.sobrenome}
-                    </td>
-                    <td>{usuario.email}</td>
-                    <td>{usuario.endereco || 'Não disponível'}</td>
-                    <td>{usuario.telefone}</td>
-                    <td>
-                      {usuario.foto_perfil ? (
-                        <img src={usuario.foto_perfil} alt={`${usuario.nome} ${usuario.sobrenome}`} className="foto-perfil" />
-                      ) : (
-                        'Sem foto'
-                      )}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6">Nenhum usuário encontrado.</td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-
-        <div className="pagination">
-          <button 
-            onClick={() => mudarPagina(paginaAtual - 1)} 
-            disabled={paginaAtual === 1}>
-            Anterior
-          </button>
-          <span>Página {paginaAtual} de {totalPaginas}</span>
-          <button 
-            onClick={() => mudarPagina(paginaAtual + 1)} 
-            disabled={paginaAtual === totalPaginas}>
-            Próxima
-          </button>
-        </div>
-      </div>
-
-      <footer>
-        <p>Copyright 2024 © IterMob</p>
-      </footer>
+          ))}
+        </tbody>
+      </table>
     </div>
-  )
+  );
 }
 
-export default TabelaUsuario
-
+export default TabelaUsuarios;

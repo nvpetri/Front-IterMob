@@ -1,9 +1,13 @@
+/* userdetails.css */
+
+/* Estilo geral para o corpo */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
 
+/* Contêiner principal da tela de detalhes do usuário */
 .user-details-container {
   background: linear-gradient(to top, #FFC222 0%, rgba(255, 194, 34, 0) 100%) no-repeat;
   background-size: cover;
@@ -14,9 +18,10 @@ body {
   flex-direction: column;
 }
 
+/* Cabeçalho */
 header {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
   padding: 20px 0;
 }
@@ -26,6 +31,7 @@ header {
   height: auto;
 }
 
+/* Cartão de detalhes do usuário */
 .user-details-card {
   background-color: #FFF6E0;
   border-radius: 8px;
@@ -38,10 +44,12 @@ header {
   align-items: center;
 }
 
+/* Ícone ao lado da imagem do usuário */
 .user-icon {
-  margin-right: 30px; 
+  margin-right: 30px;
 }
 
+/* Imagem do usuário (circular) */
 .user-image {
   width: 100px;
   height: 100px;
@@ -49,17 +57,19 @@ header {
   object-fit: cover;
 }
 
+/* Informações do usuário */
 .user-info {
   flex-grow: 1;
 }
 
 .user-info p {
   font-size: 1.1em;
-  margin: 15px 0;  
-  text-decoration: underline;  
-  padding-bottom: 10px; 
+  margin: 15px 0;
+  text-decoration: underline;
+  padding-bottom: 10px;
 }
 
+/* Informações do cartão */
 .card-info {
   display: flex;
   align-items: center;
@@ -70,12 +80,14 @@ header {
   margin-right: 5px;
 }
 
+/* Estilo para o select */
 select {
   margin-left: 10px;
   padding: 5px;
   font-size: 1em;
 }
 
+/* Rodapé da página */
 footer {
   margin-top: auto;
   padding: 10px 0;
@@ -85,4 +97,3 @@ footer {
   color: #333;
   font-weight: bold;
 }
-
