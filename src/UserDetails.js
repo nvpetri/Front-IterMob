@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Para capturar o ID da URL
+import { useParams } from 'react-router-dom'; 
 import './UserDetails.css';
 import logo from './IterLogo.png';
 
 function UserDetails() {
-  const { id } = useParams(); // Captura o ID da URL
+  const { id } = useParams(); 
   const [usuario, setUsuario] = useState(null);
   const [erro, setErro] = useState(null);
 
@@ -14,7 +14,7 @@ function UserDetails() {
         const response = await fetch(`https://itermob-back.onrender.com/v1/itermob/usuario/${id}`);
         if (response.ok) {
           const data = await response.json();
-          setUsuario(data.usuario); // Acessando a estrutura de 'usuario' na resposta
+          setUsuario(data.usuario); 
         } else {
           setErro('Erro ao carregar dados do usuário.');
         }

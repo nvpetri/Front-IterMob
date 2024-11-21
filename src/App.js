@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Escolhas from './Escolhas';  // Página com o botão 'usuario'
-import TabelaUsuarios from './TabelaUsuarios';  // Página com tabela de usuários
-import UserDetails from './UserDetails';  // Página de detalhes do usuário
+import Escolhas from './Escolhas';  
+import TabelaUsuarios from './TabelaUsuarios'; 
+import UserDetails from './UserDetails';  
 import './App.css';
 
 function App() {
