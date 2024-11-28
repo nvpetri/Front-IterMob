@@ -57,7 +57,7 @@ function TabelaUsuarios() {
               </td>
               <td>{usuario.email}</td>
               <td>{usuario.telefone}</td>
-              <td>{usuario.endereco || 'Não disponível'}</td>
+             
               <td>
                 <button>Ver Detalhes</button>
               </td>

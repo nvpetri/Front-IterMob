@@ -45,7 +45,11 @@ function UserDetails() {
         <div className="user-info">
           <p><strong>Nome:</strong> {usuario.nome} {usuario.sobrenome}</p>
           <p><strong>E-mail:</strong> {usuario.email}</p>
-          <p><strong>Endereço:</strong> {usuario.endereco || 'Não disponível'}</p>
+          <p>
+          <strong>Endereço:</strong>{' '}
+          {usuario.endereco? `${usuario.endereco.rua}, ${usuario.endereco.numero} - ${usuario.endereco.bairro}, ${usuario.endereco.cidade} - ${usuario.endereco.estado}`: 'Não disponível'}
+          </p>
+
           <p><strong>Telefone:</strong> {usuario.telefone}</p>
         </div>
       </div>
