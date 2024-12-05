@@ -1,6 +1,34 @@
 import React from 'react';
-import './TabelaOnibus.css';  
-import logo from './IterLogo.png';  
+import styles from '../css/TabelaOnibus.module.css';  // Usando CSS como módulo
+import logo from '../img/IterLogo.png';
+
+// Componente reutilizável de Tabela
+function Tabela({ data }) {
+  return (
+    <table className={styles.busTable}>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Empresa</th>
+          <th>Prefixo</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(bus => (
+          <tr key={bus.id}>
+            <td>{bus.id}</td>
+            <td>{bus.name}</td>
+            <td>{bus.company}</td>
+            <td>{bus.prefix}</td>
+            <td>{bus.status}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
 
 function TabelaOnibus() {
   const buses = [
@@ -9,37 +37,16 @@ function TabelaOnibus() {
   ];
 
   return (
-    <div className="bus-management-container">
-      <img src={logo} alt="Logo" className="logo" />     
+    <div className={styles.busManagementContainer}>
+      <img src={logo} alt="Logo IterMob" className={styles.logo} />
 
-      <div className="bus-management-card">
-        <h2>GEREÊNCIA DE ÔNIBUS</h2>
+      <div className={styles.busManagementCard}>
+        <h2>GERÊNCIA DE ÔNIBUS</h2>
         
-        <table className="bus-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Empresa</th>
-              <th>Prefixo</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {buses.map(bus => (
-              <tr key={bus.id}>
-                <td>{bus.id}</td>
-                <td>{bus.name}</td>
-                <td>{bus.company}</td>
-                <td>{bus.prefix}</td>
-                <td>{bus.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Tabela data={buses} />
       </div>
 
-      <footer>
+      <footer className={styles.footer}>
         <p>Copyright 2024 © IterMob</p>
       </footer>
     </div>
@@ -47,4 +54,3 @@ function TabelaOnibus() {
 }
 
 export default TabelaOnibus;
-

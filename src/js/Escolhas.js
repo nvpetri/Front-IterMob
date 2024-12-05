@@ -1,35 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';  
-import './Escolhas.css';
-import logo from './IterLogo.png';
-import usuariosImg from './usuarios.png'; 
-import onibusImg from './onibus.png'; 
-import facImg from './fac.png'; 
+import styles from '../css/Escolhas.module.css';  // Importando o CSS como módulo
+import logo from '../img/IterLogo.png';
+import usuariosImg from '../img/usuarios.png'; 
+import onibusImg from '../img/onibus.png'; 
+import facImg from '../img/fac.png'; 
 
 function Escolhas() {
     return (
-        <div className="main-container">
-            <header className="header">
-                <img src={logo} alt="Logo" className="logo" />
+        <div className={styles.mainContainer}>
+            <header className={styles.header}>
+                <img src={logo} alt="Logo" className={styles.logo} />
             </header>
-            <div className="container">
-                <div className="button-group">
+            <div className={styles.container}>
+                <div className={styles.buttonGroup}>
                     {/* Link para a página de usuários */}
-                    <Link to="/usuarios" className="botao" id='usuario'>
-                        <img src={usuariosImg} alt="Usuários" className="icone" />
+                    <Link to="/usuarios" className={styles.botao} id='usuario'>
+                        <img src={usuariosImg} alt="Usuários" className={styles.icone} />
                         <span>USUÁRIOS</span>
                     </Link>
-                    <div className="botao">
-                        <img src={onibusImg} alt="Ônibus" className="icone" />
+                    <div className={styles.botao}>
+                        <img src={onibusImg} alt="Ônibus" className={styles.icone} />
                         <span>ÔNIBUS</span>
                     </div>
                 </div>
-                <div className="botao fac-button">
-                    <img src={facImg} alt="FAC" className="icone" />
+                <div className={styles.botao}>
+                    <img src={facImg} alt="FAC" className={styles.icone} />
                     <span>FAC</span>
                 </div>
             </div>
-            <footer className="copyright">Copyright 2024 © IterMob</footer>
+            <footer className={styles.copyright}>Copyright 2024 © IterMob</footer>
         </div>
     );
 }

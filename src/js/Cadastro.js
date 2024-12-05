@@ -1,23 +1,22 @@
-import React, { useState } from 'react'
-import './Cadastro.css'
-import logo from './IterLogo.png'
+import React, { useState } from 'react';
+import styles from '../css/Cadastro.module.css';  // Importando o CSS como módulo
+import logo from '../img/IterLogo.png';
 
 function Cadastro() {
-  const [nome, setNome] = useState('')
-  const [sobrenome, setSobrenome] = useState('')
-  const [telefone, setTelefone] = useState('')
-  const [cpf, setCpf] = useState('')
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
-  const [confirmarSenha, setConfirmarSenha] = useState('')
-  const [usuarioId, setUsuarioId] = useState(null) 
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [usuarioId, setUsuarioId] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (senha !== confirmarSenha) {
-      alert('As senhas devem conter os mesmos caracteres!')
-      
+      alert('As senhas devem conter os mesmos caracteres!');
     }
 
     const novoUsuario = {
@@ -27,7 +26,7 @@ function Cadastro() {
       cpf,
       email,
       senha,
-    }
+    };
 
     try {
       const response = await fetch('https://itermob-back.onrender.com/v1/itermob/usuario', {
@@ -37,33 +36,33 @@ function Cadastro() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(novoUsuario),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (response.ok) {
-        setUsuarioId(data.id) 
-        alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}\nID: ${data.id}`)
-        console.log('Resposta do servidor:', data)
+        setUsuarioId(data.id);
+        alert(`Usuário cadastrado com sucesso:\nNome: ${nome}\nSobrenome: ${sobrenome}\nTelefone: ${telefone}\nCPF: ${cpf}\nEmail: ${email}\nID: ${data.id}`);
+        console.log('Resposta do servidor:', data);
       } else {
-        console.log('Erro no cadastro:', data)
-        alert('Erro no cadastro: ' + (data.message || 'Erro desconhecido'))
+        console.log('Erro no cadastro:', data);
+        alert('Erro no cadastro: ' + (data.message || 'Erro desconhecido'));
       }
     } catch (error) {
-      console.error('Erro na requisição:', error)
-      alert('Erro ao conectar com o servidor. Verifique sua conexão.')
+      console.error('Erro na requisição:', error);
+      alert('Erro ao conectar com o servidor. Verifique sua conexão.');
     }
-  }
+  };
 
   return (
     <div>
-      <header className="header">
-        <img src={logo} alt="Logo" className="logo" />
+      <header className={styles.header}>
+        <img src={logo} alt="Logo" className={styles.logo} />
       </header>
-      <div className="cadastro-container">
+      <div className={styles.cadastroContainer}>
         <h2>Cadastro</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="text"
               id="cpf"
@@ -73,7 +72,7 @@ function Cadastro() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="text"
               id="nome"
@@ -83,7 +82,7 @@ function Cadastro() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="text"
               id="sobrenome"
@@ -93,7 +92,7 @@ function Cadastro() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="text"
               id="telefone"
@@ -103,7 +102,7 @@ function Cadastro() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="email"
               id="email"
@@ -113,7 +112,7 @@ function Cadastro() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="password"
               id="senha"
@@ -123,7 +122,7 @@ function Cadastro() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <input
               type="password"
               id="confirmarSenha"
@@ -137,7 +136,7 @@ function Cadastro() {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Cadastro
+export default Cadastro;
